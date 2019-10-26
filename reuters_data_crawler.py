@@ -26,7 +26,6 @@ today_date = datetime.date(datetime.now())
 reuters_news_data_url_list = []
 
 # start loop from page 1 to page 1110
-for i in range(97,99):
     reuters_news_data_url_list.append("https://www.reuters.com/news/archive/businessnews?view=page&page=" + str(i) + "&pageSize=10")
 
 # print(reuters_news_data_url_list)
