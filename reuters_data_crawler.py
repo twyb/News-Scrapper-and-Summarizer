@@ -26,7 +26,7 @@ today_date = datetime.date(datetime.now())
 reuters_news_data_url_list = []
 
 # start loop from page 1 to page 1110
-for i in range(1110):
+for i in range(701, 1110):
     reuters_news_data_url_list.append("https://www.reuters.com/news/archive/businessnews?view=page&page=" + str(i) + "&pageSize=10")
 
 # print(reuters_news_data_url_list)
@@ -45,10 +45,14 @@ try:
         news_data = reuters_news_data.find_all(name = 'div', class_= 'story-content')
         # <class 'bs4.element.ResultSet'>
         # print(type(news_data)) 
+
+        print("_" * 60)
+        print(f'Accessing Page: {url}')
+        print("_" * 60)
         
-        sleep_time = random.randint(1,4)
-        print(f'Sleeping time: {sleep_time} seconds')
-        time.sleep(sleep_time)
+        # sleep_time = random.randint(1,4)
+        # print(f'Sleeping time: {sleep_time} seconds')
+        # time.sleep(sleep_time)
 
         try:
             for item in news_data:
@@ -58,6 +62,7 @@ try:
                 sleep_time = random.randint(1,3)
                 print(f'Sleeping time: {sleep_time} seconds')
                 time.sleep(sleep_time)
+                print(f'Crawling page: {each_link}')
 
                 article_data = create_soup(each_link)
                 
@@ -83,22 +88,33 @@ try:
                 article['content'] = p_content_string
 
                 master_list.append(article)
+
+                print(f'Successfully crawled {each_link}')
+                print("*" * 40)
             # print(master_list)
 
         except Exception as e:
             print(f'Error occured when crawling page {item}')
             print("Error: {0}".format(sys.exc_info()))
+        interval_time = datetime.utcnow()
+        print("Total time taken (mins): " +str(((interval_time-start_time).total_seconds() / 60)))
 
 
 except Exception as e:
         print(f'Error occured when crawling page {url}')
         print("Error: {0}".format(sys.exc_info()))
 
-keys = master_list[0].keys()
-with open(f'./data/reuters{today_date}.csv', 'w', newline='') as output_file:
-    dict_writer = csv.DictWriter(output_file, keys)
-    dict_writer.writeheader()
-    dict_writer.writerows(master_list)
-end_time = datetime.utcnow()
+# keys = master_list[0].keys()
+# with open(f'./data/reuters{today_date}.csv', 'w', newline='') as output_file:
+#     dict_writer = csv.DictWriter(output_file, keys)
+#     dict_writer.writeheader()
+#     dict_writer.writerows(master_list)
 
+keys = master_list[0].keys()
+with open(f'./data/reuters{today_date}.csv', 'a+', newline='') as output_file:
+    dict_writer = csv.DictWriter(output_file, keys)
+#     dict_writer.writeheader()
+    dict_writer.writerows(master_list)
+
+end_time = datetime.utcnow()
 print("Total time taken (mins): " +str(((end_time-start_time).total_seconds() / 60)))
