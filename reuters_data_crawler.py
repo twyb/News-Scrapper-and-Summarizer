@@ -26,10 +26,7 @@ today_date = datetime.date(datetime.now())
 reuters_news_data_url_list = []
 
 # start loop from page 1 to page 1110
-<<<<<<< HEAD
-=======
 for i in range(701, 1110):
->>>>>>> 7a504655ae944594e95d3637b2efa540e2da8781
     reuters_news_data_url_list.append("https://www.reuters.com/news/archive/businessnews?view=page&page=" + str(i) + "&pageSize=10")
 
 # print(reuters_news_data_url_list)
@@ -119,14 +116,5 @@ with open(f'./data/reuters{today_date}.csv', 'a+', newline='') as output_file:
 #     dict_writer.writeheader()
     dict_writer.writerows(master_list)
 
-<<<<<<< HEAD
-# keys = master_list[0].keys()
-# with open(f'./data/reuters{today_date}darren.csv', 'a+', newline='') as output_file:
-#     dict_writer = csv.DictWriter(output_file, keys)
-# #     dict_writer.writeheader()
-#     dict_writer.writerows(master_list)
-
-=======
->>>>>>> 7a504655ae944594e95d3637b2efa540e2da8781
 end_time = datetime.utcnow()
 print("Total time taken (mins): " +str(((end_time-start_time).total_seconds() / 60)))
