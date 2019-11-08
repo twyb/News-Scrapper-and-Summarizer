@@ -115,12 +115,13 @@ def get_article(article_cells, url):
 start_time = datetime.utcnow()
 today_date = datetime.date(datetime.now())
 
-main_url = "https://www.theguardian.com/world/all"
-second_part = 'https://www.theguardian.com/world?page=101'
-third_part = 'https://www.theguardian.com/world?page=401'
-fourth_part = 'https://www.theguardian.com/world?page=601'
+# main_url = "https://www.theguardian.com/world/all"
+first_part = 'https://www.theguardian.com/world?page=37'
+second_part = 'https://www.theguardian.com/world?page=366'
+# third_part = 'https://www.theguardian.com/world?page=401'
+# fourth_part = 'https://www.theguardian.com/world?page=601'
 
-main_page = make_soup(fourth_part)
+main_page = make_soup(second_part)
 
 # List to store all the crawled articles in dictionary form
 article_list = []
@@ -139,8 +140,8 @@ next_page_number = next_page[next_page.find('page=')+5:]
 
 count = 1
 
-# 1-734, [1-200], [201-400], [401-600], [601-734] 
-while(next_page != None and int(next_page_number) <= 734):
+# [37-367], [366-771]
+while(next_page != None and int(next_page_number) <= 367):
     next_page_soup = make_soup(next_page)
     next_page_cells = next_page_soup.find_all(name="a", class_="u-faux-block-link__overlay js-headline-text")
 
@@ -156,7 +157,7 @@ while(next_page != None and int(next_page_number) <= 734):
    
 # Export to csv
 keys = article_list[0].keys()
-with open(f'./data/the_guardian{today_date}_fourth_part.csv', 'w') as output_file:
+with open(f'../news_data/the_guardian{today_date}_first_part.csv', 'w', encoding='utf-8-sig') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(article_list)

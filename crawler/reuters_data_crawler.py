@@ -111,7 +111,7 @@ except Exception as e:
 #     dict_writer.writerows(master_list)
 
 keys = master_list[0].keys()
-with open(f'./data/reuters{today_date}.csv', 'a+', newline='') as output_file:
+with open(f'../news_data/reuters{today_date}.csv', 'a+', newline='') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
 #     dict_writer.writeheader()
     dict_writer.writerows(master_list)
