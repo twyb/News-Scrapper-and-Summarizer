@@ -121,7 +121,7 @@ second_part = 'https://www.theguardian.com/world?page=366'
 # third_part = 'https://www.theguardian.com/world?page=401'
 # fourth_part = 'https://www.theguardian.com/world?page=601'
 
-main_page = make_soup(first_part)
+main_page = make_soup(second_part)
 
 # List to store all the crawled articles in dictionary form
 article_list = []
@@ -130,9 +130,9 @@ article_list = []
 article_cells = main_page.find_all(name="a", class_="u-faux-block-link__overlay js-headline-text")
 
 print("_" * 60)
-print(f'Accessing Page: {first_part}')
+print(f'Accessing Page: {second_part}')
 print("_" * 60)
-article_list = get_article(article_cells, first_part)
+article_list = get_article(article_cells, second_part)
 
 next_page = main_page.find(name='a', class_='button button--small button--tertiary pagination__action--static', rel='next')
 next_page = next_page.get('href')
@@ -141,7 +141,7 @@ next_page_number = next_page[next_page.find('page=')+5:]
 count = 1
 
 # [37-367], [366-771]
-while(next_page != None and int(next_page_number) <= 367):
+while(next_page != None and int(next_page_number) <= 771):
     next_page_soup = make_soup(next_page)
     next_page_cells = next_page_soup.find_all(name="a", class_="u-faux-block-link__overlay js-headline-text")
 
@@ -157,7 +157,7 @@ while(next_page != None and int(next_page_number) <= 367):
    
 # Export to csv
 keys = article_list[0].keys()
-with open(f'../news_data/the_guardian{today_date}_first_part.csv', 'w', encoding='utf-8-sig') as output_file:
+with open(f'../news_data/the_guardian{today_date}_second_part.csv', 'w', encoding='utf-8-sig') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(article_list)
