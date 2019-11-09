@@ -121,7 +121,7 @@ second_part = 'https://www.theguardian.com/world?page=366'
 # third_part = 'https://www.theguardian.com/world?page=401'
 # fourth_part = 'https://www.theguardian.com/world?page=601'
 
-main_page = make_soup(second_part)
+main_page = make_soup(first_part)
 
 # List to store all the crawled articles in dictionary form
 article_list = []
@@ -130,9 +130,9 @@ article_list = []
 article_cells = main_page.find_all(name="a", class_="u-faux-block-link__overlay js-headline-text")
 
 print("_" * 60)
-print(f'Accessing Page: {fourth_part}')
+print(f'Accessing Page: {first_part}')
 print("_" * 60)
-article_list = get_article(article_cells, main_url)
+article_list = get_article(article_cells, first_part)
 
 next_page = main_page.find(name='a', class_='button button--small button--tertiary pagination__action--static', rel='next')
 next_page = next_page.get('href')
