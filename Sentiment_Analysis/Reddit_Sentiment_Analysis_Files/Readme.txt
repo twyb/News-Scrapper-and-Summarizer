@@ -1,0 +1,1 @@
+This folder contains all the sentiment scores of comments extracted from Reddit
