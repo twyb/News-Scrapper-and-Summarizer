@@ -1,0 +1,109 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!--Retrieve JQuery Library-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><!--Retrieve w3.css CSS file-->
+<link rel='stylesheet' href='css/styles.css' type="text/css"><!--Using style.css file for styling-->
+<script src="https://kit.fontawesome.com/adfeb7cf21.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<div>
+    <div>
+        <ul class="topnav"> <!--Navigation Bar and Contents-->
+            <li>
+                <button type = 'button' class='back' onclick="home()">Home</button><!--Direct to Main Page-->
+            </li>
+        </ul>
+    </div>
+    <div class='grid'>
+        <div class='logo'>
+            <img src = 'image/Insights.png' class='logo_image'>        
+        </div>
+    </div>
+    
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="What are you looking for?" id='searchterm'>
+        <button type="submit" class="searchButton" id='search'>
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
+
+    <!-- Container for the report -->
+    <div class='report_container'>
+        <div class = 'panel'>
+            <!-- Container for report contents -->
+            <div class = 'report'>
+                <!-- Topic Title -->
+                
+                <div class='title'>
+                    <div id='title'></div>        
+                </div>
+                <!-- Summary -->
+                <div class='summary'>
+                    <div class='summary_header'>News Article Summary</div>
+                    <div id='summary_content' class='summary_content'></div>
+                </div>
+                <div class='public'>
+                    <div class='public_header'>Public Summary</div>
+                    <div class='score' id = 'score'></div>
+                    <!-- <div class = 'split'>  -->
+                        <div class='positive'>
+                            <div class = 'positive_header'>Positive Summary</div>
+                            <div class = 'positive_summary' id='positive_summary'></div>
+                        </div>
+                        <div class='negative'>
+                            <div class = 'negative_header'>Negative Summary</div>
+                            <div class = 'negative_summary' id='negative_summary'></div>
+                        </div>
+                    <!-- </div>    -->
+                </div>
+            </div>
+            <!-- Picture for the topic -->
+            <div class = 'picture'>
+                <img src='sanctions.jpg' class='profile' id='profile'>
+            </div>
+        </div>
+    </div>
+
+<div>
+<script>
+    function home(){
+        window.location.replace("index.html")
+    }
+    if(sessionStorage.getItem('title') != null){
+        document.getElementById('title').innerHTML = sessionStorage.getItem('title')
+        document.getElementById('summary_content').innerHTML = sessionStorage.getItem('summary')
+        var picture = 'image/' + sessionStorage.getItem('picture') + '.jpg'
+        console.log(picture)
+        document.getElementById('profile').src = picture
+        document.getElementById('positive_summary').innerHTML = sessionStorage.getItem('positive')
+        document.getElementById('negative_summary').innerHTML = sessionStorage.getItem('negative')
+        document.getElementById('score').innerHTML = 'Sentiment Score: ' +  sessionStorage.getItem('score')
+    }
+    document.getElementById('search').addEventListener('click', function(){
+        var search = document.getElementById('searchterm').value
+        console.log(search)
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': search}),
+            success: function(response){
+                document.getElementById('title').innerHTML = response[0]
+                document.getElementById('summary_content').innerHTML = response[1]
+                var picture = 'image/' + response[2] + '.jpg'
+                console.log(response)
+                document.getElementById('profile').src = picture
+                document.getElementById('positive_summary').innerHTML = response[3]
+                document.getElementById('negative_summary').innerHTML = response[4]
+                document.getElementById('score').innerHTML = 'Sentiment Score: ' + response[5]
+            }   
+
+        })
+    })
+
+    
+</script>
+</body>
+</html>

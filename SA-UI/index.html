@@ -1,0 +1,177 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!--Retrieve JQuery Library-->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><!--Retrieve w3.css CSS file-->
+<link rel='stylesheet' href='css/styles.css' type="text/css"><!--Using style.css file for styling-->
+<script src="https://kit.fontawesome.com/adfeb7cf21.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<div>
+    <div>
+        
+        <ul class="topnav"> <!--Navigation Bar and Contents-->
+            <li>
+                <button type = 'button' class='back' onclick="compare()">Home</button><!--Direct to Compare Jobs Page-->
+            </li>
+        </ul>
+    </div>
+    
+    <div class='grid'>
+            <div class='logo'>
+                <img src = 'image/Insights.png' class='logo_image'>        
+            </div>
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="What are you looking for?" id='searchterm'>
+                <button type="submit" class="searchButton" id='search'>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <div class='top'>
+                <span >Trending Topics</span>
+            </div>
+            <div class='row'>
+                <div class='container'>
+                    <img src="image/hk.jpg" class='image'>
+                    <div class="overlay">
+                        <div id ='grid1' class="text">Hong Kong Protests</div>
+                    </div>
+                </div>
+                <div class="container">
+                    <img src="image/iran.jpg" class='image'>
+                    <div class="overlay">
+                        <div id ='grid2' class="text">Iran Sanctions</div>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='container'>
+                    <img src="image/trade.jpg" class='image'>
+                    <div class="overlay">
+                        <div id ='grid3' class="text">US China Trade War</div>
+                    </div>
+                </div>
+                <div class="container">
+                    <img src="image/brexit.jpg" class='image'>
+                    <div class="overlay">
+                        <div id ='grid4' class="text">Brexit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div>
+<script>
+    document.getElementById('search').addEventListener('click', function(){
+        var search = document.getElementById('searchterm').value
+        console.log(search)
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': search}),
+            success: function(response){
+                sessionStorage.setItem('title', response[0])
+                sessionStorage.setItem('summary', response[1])
+                sessionStorage.setItem('picture', response[2])
+                sessionStorage.setItem('positive', response[3])
+                sessionStorage.setItem('negative', response[4])
+                sessionStorage.setItem('score', response[5])
+                window.location.href = "summarise.html"
+            }
+
+        })
+    })
+
+
+    document.getElementById('grid1').addEventListener('click', function(){
+        // console.log(e.target)
+        var output = document.getElementById('grid1').innerHTML
+        // console.log(output)s
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': output}),
+            success: function(response){
+                console.log(response)
+                sessionStorage.setItem('title', response[0])
+                sessionStorage.setItem('summary', response[1])
+                sessionStorage.setItem('picture', response[2])
+                sessionStorage.setItem('positive', response[3])
+                sessionStorage.setItem('negative', response[4])
+                sessionStorage.setItem('score', response[5])
+                window.location.href = "summarise.html"
+            }
+
+        })
+    })
+
+    document.getElementById('grid2').addEventListener('click', function(){
+        var output = document.getElementById('grid2').innerHTML
+        // console.log(output)
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': output}),
+            success: function(response){
+                console.log(response)
+                sessionStorage.setItem('title', response[0])
+                sessionStorage.setItem('summary', response[1])
+                sessionStorage.setItem('picture', response[2])
+                sessionStorage.setItem('positive', response[3])
+                sessionStorage.setItem('negative', response[4])
+                sessionStorage.setItem('score', response[5])
+                window.location.href = "summarise.html"
+            }
+
+        })
+    })
+
+    document.getElementById('grid3').addEventListener('click', function(){
+        var output = document.getElementById('grid3').innerHTML
+        // console.log(output)
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': output}),
+            success: function(response){
+                console.log(response)
+                sessionStorage.setItem('title', response[0])
+                sessionStorage.setItem('summary', response[1])
+                sessionStorage.setItem('picture', response[2])
+                sessionStorage.setItem('positive', response[3])
+                sessionStorage.setItem('negative', response[4])
+                sessionStorage.setItem('score', response[5])
+                window.location.href = "summarise.html"
+            }
+
+        })
+    })
+
+    document.getElementById('grid4').addEventListener('click', function(){
+        var output = document.getElementById('grid4').innerHTML
+        // console.log(output)
+        $.ajax({
+            type : 'POST', 
+            url: "http://127.0.0.1:5000/summary_page", //URL to generate the network for all role values using the role service in Flask
+            contentType: 'application/json',
+            data : JSON.stringify({'data': output}),
+            success: function(response){
+                console.log(response)
+                sessionStorage.setItem('title', response[0])
+                sessionStorage.setItem('summary', response[1])
+                sessionStorage.setItem('picture', response[2])
+                sessionStorage.setItem('positive', response[3])
+                sessionStorage.setItem('negative', response[4])
+                sessionStorage.setItem('score', response[5])
+                window.location.href = "summarise.html"
+            }
+
+        })
+    })
+</script>
+</body>
+</html>

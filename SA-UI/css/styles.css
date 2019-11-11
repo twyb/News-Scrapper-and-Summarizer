@@ -1,0 +1,229 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/* Navigation Bar Buttons */
+/* Home Button */
+.back{
+  float: right;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+}
+.back:hover {
+  background-color: #444;
+  }
+
+/* Navigation Bar */
+ul.topnav {
+  list-style-type: none;
+  top: 50%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #111;
+}
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Search Function */
+.search {
+  padding-top: .5%;
+  width: 45%;
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #111;
+  border-right: none;
+  padding: 5px;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #111;
+}
+
+.searchTerm:focus{
+  color: #111;
+}
+
+.searchButton {
+  width: 40px;
+  height: 35px;
+  border: 1px solid #111;
+  background: #111;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  /* position: absolute; */
+  top: 50%;
+  /* left: 50%; */
+  margin: 0 auto;
+  /* transform: translate(-50%, -50%); */
+}
+
+/* News Tiles Layout */
+.grid{
+  text-align: center;
+  top: 50%
+}
+
+.row{
+  /* float: left; */
+  width: 40%;
+  padding: 5px;
+  display: flex;
+  margin: 0 auto
+}
+.container {
+  clear: both;
+  display: table;
+  flex: 25%;
+  padding: 5px;
+}
+.image {
+  position: relative;
+  float: left;
+  width:  300px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
+.top{
+  padding: 20px 0px 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+}
+
+.overlay {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #9DBFAF;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Panel */
+.report_container{
+  padding: 50px;
+}
+
+.panel{
+  border-style:solid;
+  border-width: 3px;
+  width: 80%;
+  height:80%;
+  margin: 0 auto;
+  display:flex;
+  
+}
+.report{
+  display:block;
+  width:80%
+}
+.picture{
+  float:right;
+  height:100%;
+  width: 40%;
+  max-width:60%
+}
+
+.profile{
+  width:100%;
+  height:100%;
+}
+
+.title{
+  font-style:'Roboto';
+  font-size: 35px;
+  padding: 5px;
+}
+
+.summary_header, .public_header{
+  font-size:20px;
+  padding: 5px;
+  font-weight: 20px;
+}
+
+.score{
+  font-size:15px;
+  padding: 5px;
+  font-weight: 20px;
+}
+
+.summary_content, .opinion{
+  font-size: 13px;
+  padding: 5px;
+}
+
+.split{
+  display:flex;
+  padding: 5px;
+}
+
+.positive{
+  /* text-align: center; */
+  padding: 0px 10px 20px 5px;
+  /* width:50%; */
+}
+
+.negative{
+  /* float:right; */
+  padding: 0px 10px 0px 5px;
+  /* width:50%; */
+}
+
+.logo{
+  width:40%;
+  height:40%;
+  margin: 0 auto;
+  padding: 25px 0px 0px 0px;
+}
+
+.logo_image {
+  position: relative;
+  margin: 0 auto;
+  width:  400px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+
