@@ -91,11 +91,11 @@ math and re libray are built-in python module and do not require any installatio
 
 
 ##Project Structure:
-|- crawler: Code to crawl from reddit
-|- Individual Sentiment Analysis Files: Contains the results of our sentiment file in the form of csv
-|- Modelling for topic
-|- News data: The csv files for the data collected from reuters and guardians
-|- Preprocessing: Code for topic modelling pre-processing
-|- Sentiment Analysis: Code on how the sentiment analysis is being done using textblob
-|- Sentiment Split: CSv files after pos is being performed
-|- Social data: CSv files crawled from reddit and twitter based on the topics we have find out 
+|- crawler: Code to crawl from reddit. 
+|- Individual Sentiment Analysis Files: Contains the results of our sentiment file in the form of csv. 
+|- Modelling for topic. 
+|- News data: The csv files for the data collected from reuters and guardians. 
+|- Preprocessing: Code for topic modelling pre-processing. 
+|- Sentiment Analysis: Code on how the sentiment analysis is being done using textblob. 
+|- Sentiment Split: CSv files after pos is being performed. 
+|- Social data: CSv files crawled from reddit and twitter based on the topics we have find out. 
